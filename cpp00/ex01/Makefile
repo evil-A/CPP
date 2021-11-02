@@ -6,13 +6,13 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 18:45:11 by evila-ro          #+#    #+#              #
-#    Updated: 2021/10/29 19:26:13 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/11/02 22:50:06 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= chorbo
 
-SRCS	= ./main.cpp ./chorbo.class.cpp
+SRCS	= ./main.cpp ./Chorbo.cpp ./Contact.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
