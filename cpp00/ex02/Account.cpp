@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:07:02 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/03 23:28:43 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/04 13:50:03 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include <chrono>
+#include <time.h>
 
 int	Account::_nbAccounts;
 int	Account::_totalAmount;
