@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 18:50:46 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/02 22:50:10 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/03 18:52:39 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		rascar(Agenda *chorbo)
 	int			indice;
 
 	std::getline(std::cin, dice);
-	indice = atoi(dice.c_str());
+	indice = std::atoi(dice.c_str());
 	if (indice >= 1 && indice <= chorbo->index && chorbo->index > 1)
 		chorbo->basca[indice - 1].getparams();
 	else
