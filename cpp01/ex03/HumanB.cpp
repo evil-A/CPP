@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/09 23:01:29 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/10 00:17:18 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
-int	main(void)
-{	
-	Zombie	*undead;
+HumanB::HumanB (std::string name) : _weapon(NULL)
+{
+	this->_name = name;
+}
 
+HumanB::~HumanB (void)
+{
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+}
 
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	this->_weapon = &weapon;
+}
 
-
-	return (0);
+void	HumanB::attack(void)
+{
+	std::cout << this->_name << " attacks with his ";
+	if (this->_weapon)
+		std::cout << this->_weapon->getType() << std::endl;
+	else
+		std::cout << "knucles" << std::endl;
 }

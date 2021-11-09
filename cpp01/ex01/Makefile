@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/04 18:03:23 by evila-ro          #+#    #+#              #
-#    Updated: 2021/11/08 23:07:52 by evila-ro         ###   ########.fr        #
+#    Created: 2021/11/09 00:04:16 by evila-ro          #+#    #+#              #
+#    Updated: 2021/11/09 02:16:36 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= zombie
 
-SRCS	= ./main.cpp	./Zombie.cpp	./newZombie.cpp	./randomChump.cpp
+SRCS	= ./main.cpp	./Zombie.cpp	./ZombieHorde.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
@@ -33,6 +33,6 @@ clean:
 fclean:		clean
 				@${RM} ${NAME}
 
-re:	fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

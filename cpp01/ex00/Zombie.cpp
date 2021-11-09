@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/08 01:24:33 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/08 23:25:11 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(void)
-{	
-	Zombie	*undead;
+std::string	Zombie::name;
 
+Zombie::Zombie (void)
+{
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+	this->name = "noname";
 
-
-
-	return (0);
 }
+
+Zombie::Zombie (std::string name)
+{
+
+	this->name = name;
+	std::cout << name << " está nomuerto" << std::endl;
+
+}
+
+Zombie::~Zombie (void)
+{
+	std::cout << this->name << " is destroyed." << std::endl;
+}
+
+void Zombie::announce (void)
+{
+	std::cout << Zombie::name << " BraiiiiiiinnnzzzZ..." << std::endl;
+}
+

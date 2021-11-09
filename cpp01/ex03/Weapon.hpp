@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/09 04:08:28 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/09 05:03:52 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include <iostream>
 
-int	main(void)
-{	
-	Zombie	*undead;
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
+class Weapon
+{
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+public:
 
+	Weapon (std::string type);
+	Weapon (void);
+	~Weapon (void);
+	void	setType (std::string type);
+	std::string const & getType (void) const;
 
+private:
 
-	return (0);
-}
+	std::string	type;
+
+};
+
+#endif

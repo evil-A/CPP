@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/04 18:10:36 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/08 23:08:18 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef	ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int	main(void)
-{	
-	Zombie	*undead;
+#include <iostream>
+#include <string>
 
+class Zombie
+{
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+public:
 
+	static void	announce(void);
 
+	Zombie (void);
+	Zombie (std::string name);
+	~Zombie(void);
 
-	return (0);
-}
+private:
+
+	static std::string	name;
+
+};
+
+Zombie* newZombie (std::string name);
+void	randomChump (std::string name);
+
+#endif

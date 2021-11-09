@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/09 23:00:10 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/10 00:17:15 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include <iostream>
+#include <string>
 
-int	main(void)
-{	
-	Zombie	*undead;
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
+
+class HumanB
+{
+
+public:
 
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
+	HumanB (std::string name);
+	~HumanB (void);
+	void	attack(void);
+	void	setWeapon(Weapon &weapon);
+
+private:
 	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+	Weapon	*_weapon;
+	std::string _name;
 
+};
 
-
-	return (0);
-}
+#endif

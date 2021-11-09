@@ -5,29 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/09 03:24:26 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/10 00:17:22 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
+#include <iostream>
+#include <string>
 
 int	main(void)
-{	
-	Zombie	*undead;
+{
+	{
+		Weapon	 weaponry = Weapon("long sword +1");
 
+		HumanA	bob("Bob", weaponry);
+		bob.attack();
+		weaponry.setType("sacred vengefull +4");
+		bob.attack();
+	}
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+	{
+		Weapon	weaponry = Weapon("chainsaw");
 
-
+		HumanB	jim("Jim");
+		jim.attack();
+		jim.setWeapon(weaponry);
+		jim.attack();
+		weaponry.setType("electrified chainsaw with flametrhower");
+		jim.attack();
+	}
 
 	return (0);
 }

@@ -5,29 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 01:22:23 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:13 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/08 23:45:48 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/09 02:16:16 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 int	main(void)
-{	
-	Zombie	*undead;
+{
+	int	i;
 
+	Zombie	*horda = zombieHorde(3, "All flesh must be eaten");
+	if (!horda)
+		return (-1);
 
-	std::cout << "Stack overflow" << std::endl;
-	randomChump("Fausto");
-	randomChump("Frank Coconut");
-	randomChump("Rockefeller");
-	
-	std::cout << "Heap of the moment" << std::endl;
-	undead = newZombie("Braulio");
-	undead->announce();
-	delete undead;
+	for (i = 0; i < 3; i++)
+		horda[i].announce();
 
-
-
+	delete[] horda;
 	return (0);
 }
