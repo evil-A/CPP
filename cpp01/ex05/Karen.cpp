@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 06:53:22 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/12 02:15:38 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/12 02:17:55 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,8 @@ void	Karen::complain (std::string level)
 	void	(Karen::*comment[4])() = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
 
 	for (i = 0; i < 4; i++)
-	{
 		if (function[i].compare(level) == 0)
-		{
 			(this->*comment[i])();
-		}
-	}
 }
 
 void	Karen::debug (void)
