@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 06:53:22 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/11 07:13:28 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/12 02:15:38 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,17 @@ Karen::~Karen (void)
 
 void	Karen::complain (std::string level)
 {
+	size_t	i;
+	std::string	function[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void	(Karen::*comment[4])() = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
 
+	for (i = 0; i < 4; i++)
+	{
+		if (function[i].compare(level) == 0)
+		{
+			(this->*comment[i])();
+		}
+	}
 }
 
 void	Karen::debug (void)
