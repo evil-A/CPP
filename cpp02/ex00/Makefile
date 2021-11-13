@@ -6,7 +6,7 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 05:29:42 by evila-ro          #+#    #+#              #
-#    Updated: 2021/11/12 09:09:29 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/11/13 08:04:21 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM		= rm -f
 
 FLAGS	= -Wall -Werror -Wextra -std=c++98
 
-${NAME}:	${OBJ}
+${NAME}:	${OBJS}
 				@${CC} ${FLAGS} -o ${NAME} ${OBJS}
 
 all:		${NAME}

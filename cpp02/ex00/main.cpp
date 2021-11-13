@@ -6,18 +6,18 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 05:25:50 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/12 09:09:25 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/13 08:04:12 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Fixed.hpp"
+#include <iostream>
 
 int main(void)
 {
 	Fixed	a;
 	Fixed	b(a);
-	fixed	c;
+	Fixed	c;
 
 	c = b;
 
