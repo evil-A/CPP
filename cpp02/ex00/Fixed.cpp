@@ -6,12 +6,12 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 05:28:11 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/13 08:04:18 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/13 08:05:28 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 #include <iostream>
+#include "Fixed.hpp"
 
 Fixed::Fixed(void) : _point(0)
 {

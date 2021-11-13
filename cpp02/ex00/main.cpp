@@ -6,12 +6,12 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 05:25:50 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/13 08:04:12 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/13 08:05:20 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 #include <iostream>
+#include "Fixed.hpp"
 
 int main(void)
 {
