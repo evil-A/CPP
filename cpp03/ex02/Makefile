@@ -6,13 +6,13 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 09:25:12 by evila-ro          #+#    #+#              #
-#    Updated: 2021/11/18 05:03:08 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/11/18 05:55:31 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= open
 
-SRCS	= ./main.cpp	./ClapTrap.cpp	./ScavTrap.cpp
+SRCS	= ./main.cpp	./ClapTrap.cpp	./ScavTrap.cpp	./FragTrap.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 

@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 08:07:29 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:08:16 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/18 08:47:52 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 #define TYPE "ScavTrap"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(void)
+{
+	this->_hit = HITS;
+	this->_maxhit = HITS;
+	this->_energy = ENERGYS;
+	this->_dmg = DMGS;
+
+	return ;
+}
+
+ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name)
 {
 	this->_hit = HITS;
 	this->_maxhit = HITS;
@@ -26,7 +36,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src) :ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
 	std::cout << " Copy connstructor is here" << std::endl;
 
@@ -35,13 +45,13 @@ ScavTrap::ScavTrap(ScavTrap const &src) :ClapTrap(src)
 
 ScavTrap	&ScavTrap::operator=(ScavTrap const &ass)
 {
-	std::cout << "Assignation operator " << ass._name << " is looking for problems with " << this->_name << std::endl;
 	this->_name = ass._name;
 	this->_hit = ass._hit;
 	this->_maxhit = ass._maxhit;
 	this->_energy = ass._energy;
 	this->_dmg = ass._dmg;
 
+	std::cout << "Assignation operator " << ass._name << " is looking for problems with " << this->_name << std::endl;
 	return (*this);
 }
 

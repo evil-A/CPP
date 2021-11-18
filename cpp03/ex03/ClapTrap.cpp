@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 05:24:05 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:00:39 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/18 08:47:31 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,11 @@
 
 ClapTrap::ClapTrap(void)
 {
-	this->_name = "noname";
-	this->_hit = HIT;
-	this->_maxhit = HIT;
-	this->_energy = ENERGY;
-	this->_dmg = DMG;
 
-	std::cout << "Default constructor invoked" << std::endl;
-
-	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string const &name) : _name(name), _hit(HIT), _maxhit(HIT), _energy(ENERGY), _dmg(DMG)
 {
-	this->_hit = HIT;
-	this->_maxhit = HIT;
-	this->_energy = ENERGY;
-	this->_dmg = DMG;
-
 	std::cout << "Constructor invoked with " << this->_name << std::endl;
 
 	return ;
@@ -48,13 +35,14 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &ass)
 {
-	std::cout << "Assignation operator invoked " << ass._name << " from " << this->_name << std::endl;
 	this->_name = ass._name;
 	this->_hit = ass._hit;
 	this->_maxhit = ass._maxhit;
 	this->_energy = ass._energy;
 	this->_dmg = ass._dmg;
 
+	std::cout << "Assignation operator invoked " << ass._name << " from " << this->_name << std::endl;
+	
 	return (*this);
 }
 
@@ -91,7 +79,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-//	std::cout << this->_hit << this->_maxhit << std::endl;
 	if (amount + this->_hit >= this->_maxhit)
 	{
 		amount = this->_maxhit - this->_hit;

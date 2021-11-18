@@ -6,19 +6,19 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 09:25:12 by evila-ro          #+#    #+#              #
-#    Updated: 2021/11/18 05:03:08 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/11/18 08:30:24 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= open
 
-SRCS	= ./main.cpp	./ClapTrap.cpp	./ScavTrap.cpp
+SRCS	= ./main.cpp	./ClapTrap.cpp	./ScavTrap.cpp	./FragTrap.cpp	./DiamondTrap.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CC		= clang++
 
-FLAGS	= -Wall -Werror -Wextra -std=c++98
+FLAGS	= -Wall -Werror -Wextra -Wshadow -Wno_shadow -std=c++98
 
 RM		= rm -f
 

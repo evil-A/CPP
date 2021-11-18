@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 06:35:35 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:08:55 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/17 08:06:35 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/18 08:09:45 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef  SCAVTRAP_H
+# define SCAVTRAP_H
 
-int main(void)
+#include "ClapTrap.hpp"
+#define HITS 100
+#define ENERGYS 50
+#define DMGS 20
+
+class ScavTrap : virtual public ClapTrap
 {
-	ScavTrap 		verde("Verde");
-	ScavTrap		rojo("Rojo");
-	ScavTrap 		rosa(rojo);
+	protected:
+		ScavTrap(void);
 
-	rosa = ScavTrap("Rosa");
+	public:
+		ScavTrap(std::string const &name);
+		ScavTrap(ScavTrap const &src);
+		~ScavTrap(void);
+		
+		ScavTrap	&operator=(ScavTrap const &ass);
 
-	verde.attack("Rojo");
-	rojo.attack("Verde");
-	rosa.attack("Rojo");
+		void	attack(std::string const &target);
+		void	guardGate(void);
+};
 
-	verde.takeDamage(2);
-	rojo.takeDamage(111);
-	verde.beRepaired(2);
-	verde.beRepaired(2);
-	rojo.beRepaired(111);
-
-	rosa.guardGate();
-	return (0);
-}
+#endif

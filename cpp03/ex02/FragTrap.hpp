@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 06:35:35 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:08:55 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/11/18 05:37:23 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/11/18 05:55:28 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef  FRAGTRAP_H
+# define FRAGTRAP_H
 
-int main(void)
+#include "ClapTrap.hpp"
+#define HITF 100
+#define ENERGYF 100
+#define DMGF 30
+
+class FragTrap : public ClapTrap
 {
-	ScavTrap 		verde("Verde");
-	ScavTrap		rojo("Rojo");
-	ScavTrap 		rosa(rojo);
+	public:
+		FragTrap(std::string name);
+		FragTrap(FragTrap const &src);
+		~FragTrap(void);
 
-	rosa = ScavTrap("Rosa");
+		FragTrap	&operator=(FragTrap const &ass);
 
-	verde.attack("Rojo");
-	rojo.attack("Verde");
-	rosa.attack("Rojo");
+		void	highFivesGuys(void);
+};
 
-	verde.takeDamage(2);
-	rojo.takeDamage(111);
-	verde.beRepaired(2);
-	verde.beRepaired(2);
-	rojo.beRepaired(111);
-
-	rosa.guardGate();
-	return (0);
-}
+#endif
