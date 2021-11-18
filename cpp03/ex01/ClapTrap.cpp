@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 05:24:05 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:00:39 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/18 09:01:57 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(void)
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string const &name) : _name(name)
 {
 	this->_hit = HIT;
 	this->_maxhit = HIT;

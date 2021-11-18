@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 09:33:42 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/18 05:00:32 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/18 09:00:47 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ClapTrap
 	public:
 
 		ClapTrap(void);
-		ClapTrap(std::string name);
+		ClapTrap(std::string const &name);
 		ClapTrap(ClapTrap const &src);
 		ClapTrap	&operator=(ClapTrap const &ass);
 		~ClapTrap(void);
