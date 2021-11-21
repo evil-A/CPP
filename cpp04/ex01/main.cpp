@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 09:10:29 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/21 13:29:09 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/11/21 13:43:58 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	main(void)
 
 	zoo = 4;
 	Animal	*animals[zoo];
-	Dog	cujo;
+	Dog	*cujo = new Dog();
 	Dog	cerberus;
 
-	cerberus = cujo;
+	cerberus = *cujo;
 
 	for (i = 0; i < zoo/2; i++)
 		animals[i] = new Dog();
@@ -33,11 +33,12 @@ int	main(void)
 		animals[i] = new Cat();
 
 
-	cujo.setI("Puta mierda");
-	cujo.getI();
+	cujo->setI("Puta mierda");
+	cujo->getI();
 	
 	cerberus.getI();
-	cerberus = cujo;
+	cerberus = *cujo;
+	delete cujo;
 	cerberus.getI();
 
 	
