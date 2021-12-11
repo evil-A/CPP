@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:55:04 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/10 03:41:43 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/11 04:11:18 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Form
 		bool				_signed;
 		int const			_sign;
 		int const			_execute;
+	protected:
+		virtual void	action(void) const = 0;
 	public:
 		Form(void);
 		Form(std::string const &_name, int const &sign, int const &_execute);

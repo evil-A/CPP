@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 23:18:16 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/10 03:53:39 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/11 04:11:14 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,35 @@ void	Form::beExecuted(Bureaucrat const &b) throw(GradeTooLowException)
 	else if (grade > this->_execute)
 		throw Form::GradeTooLowException();
 	else
-		std::cout << "Form::execute mothod was called right" << std::endl;
+	{
+		try
+		{
+			tthis->action();
+		}
+		catch(std::exception const &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		catch(std::string const &s)
+		{
+			std::cerr << s << std::endl;
+		}
+	}
+}
+
+char const	*Form::GradeTooHighException::what(void)const throw()
+{
+	return ("GradeTooHighException");
 }
 
 char const	*Form::GradeTooLowException::what(void)const throw()
 {
 	return ("GradeTooLowException");
+}
+
+char const	*Form::FormNotSignedException::what(void)const throw()
+{
+	return ("FormNotSignedException");
 }
 
 std::ostream	&operator<<(std::ostream &output, Form const &f)
