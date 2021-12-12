@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 04:56:15 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/12 04:37:36 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/12/12 05:53:23 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/12/12 06:30:54 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  ROBOTOMYREQUESTFORM_H
-# define ROBOTOMYREQUESTFORM_H
+#ifndef  INTERN_H
+# define INTERN_H
 
 #include "Form.hpp"
+#include <iostream>
+#include <exception>
 
-class RobotomyRequestForm :  public Form
+class Intern
 {
-	private:
-		std::string	_target;
-	protected:
-		void	action(void)const;
 	public:
-		RobotomyRequestForm(void);
-		RobotomyRequestForm(std::string const &src);
-		RobotomyRequestForm(RobotomyRequestForm const &src);
-		RobotomyRequestForm	&operator=(RobotomyRequestForm const &ass);
-		~RobotomyRequestForm(void);
+		Intern(void);
+		Intern(Intern const &src);
+		Intern	&operator=(Intern const &ass);
+		~Intern(void);
+
+		class UnknownFormException : public std::exception
+		{
+			public:
+				char const	*what()const throw();
+		};
+
+		Form const	*makeForm(std::string const &name, std::string const &target)const throw(Intern::UnknownFormException);
+
 };
 
 #endif

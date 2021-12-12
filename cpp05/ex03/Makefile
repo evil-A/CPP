@@ -6,13 +6,13 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 19:00:39 by evila-ro          #+#    #+#              #
-#    Updated: 2021/12/12 05:50:27 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/12/12 05:53:13 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= bureau
 
-SRCS	= ./main.cpp	./Bureaucrat.cpp	./Form.cpp	./ShrubberyCreationForm.cpp	./RobotomyRequestForm.cpp	./PresidentialPardonForm.cpp
+SRCS	= ./main.cpp	./Bureaucrat.cpp	./Form.cpp	./ShrubberyCreationForm.cpp	./RobotomyRequestForm.cpp	./PresidentialPardonForm.cpp	./Intern.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 

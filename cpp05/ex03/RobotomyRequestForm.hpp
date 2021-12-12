@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 03:22:05 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/12 05:01:23 by evila-ro         ###   ########.fr       */
+/*   Created: 2021/12/11 04:56:15 by evila-ro          #+#    #+#             */
+/*   Updated: 2021/12/12 06:21:10 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  SHRUYBBERYCREATIONFORM_H
-# define SHRUYBBERYCREATIONFORM_H
+#ifndef  ROBOTOMYREQUESTFORM_H
+# define ROBOTOMYREQUESTFORM_H
 
 #include "Form.hpp"
 
-class ShrubberyCreationForm : public Form
+class RobotomyRequestForm :  public Form
 {
 	private:
-		std::string		_target;
+		std::string	_target;
 	protected:
-		void	action(void)const throw(std::exception, std::string);
+		void	action(void)const;
 	public:
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string const &target);
-		ShrubberyCreationForm(ShrubberyCreationForm const &src);
-		ShrubberyCreationForm	&operator=(ShrubberyCreationForm const & ass);
-		~ShrubberyCreationForm(void);
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string const &src);
+		RobotomyRequestForm(RobotomyRequestForm const &src);
+		RobotomyRequestForm	&operator=(RobotomyRequestForm const &ass);
+		~RobotomyRequestForm(void);
+
+		static Form const	*createForm(std::string const &target);
 };
 
 #endif

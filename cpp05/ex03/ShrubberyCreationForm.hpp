@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 03:22:05 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/12 05:01:23 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/12 06:20:45 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm(ShrubberyCreationForm const &src);
 		ShrubberyCreationForm	&operator=(ShrubberyCreationForm const & ass);
 		~ShrubberyCreationForm(void);
+
+		static Form const	*createForm(std::string const &target);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 04:11:37 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/12 05:30:41 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/12 06:27:39 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,9 @@ void	ShrubberyCreationForm::action(void)const throw(std::exception, std::string)
 		output << line << std::endl;
 	input.close();
 	output.close();
+}
+
+Form const	*ShrubberyCreationForm::createForm(std::string const &target)
+{
+	return (new ShrubberyCreationForm(target));
 }
