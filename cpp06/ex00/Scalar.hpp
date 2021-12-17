@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 08:33:26 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/17 10:52:11 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/17 11:48:50 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <string.h>
 #include <math.h>
 #include <limits>
 #include <fstream>
@@ -27,15 +26,15 @@
 class Scalar
 {
 	private:
+		std::string	_literal;
 		int			_int;
 		float		_float;
-		char		_char;
 		double		_double;
-		std::string	_literal;
+		char		_char;
 
 	public:
 		Scalar(void);
-		Scalar(std::string const &literal);
+		//Scalar(std::string const &literal);
 		~Scalar(void);
 
 		std::string const	getLiteral(void)const;

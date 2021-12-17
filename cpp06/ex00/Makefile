@@ -6,7 +6,7 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/12 08:20:31 by evila-ro          #+#    #+#              #
-#    Updated: 2021/12/17 11:00:04 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/12/17 11:30:06 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ OBJS	= ${SRCS:.cpp=.o}
 
 CC		= clang++
 
-FLAGS	= -Wall -Werror -Wextra -std=c++98 #-g3 -fsanitize=address
+CXXFLAGS	= -Wall -Werror -Wextra -std=c++98 -Wunused-private-field #-g3 -fsanitize=address
 
 RM		= rm -f
 
 ${NAME}:	${OBJS}
-				@${CC} ${FLAGS} -o ${NAME} ${OBJS}
+				@${CC} ${CXXFLAGS} -o ${NAME} ${OBJS}
 
 all:		${NAME}
 
