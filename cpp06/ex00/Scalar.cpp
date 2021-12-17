@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:52:52 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/17 12:00:09 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/17 12:33:02 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,46 @@ std::string const	Scalar::getLiteral(void)const
 
 void	Scalar::setLiteral(std::string const &literal)
 {
+	char	*surplus;
+
 	this->_literal = literal;
-	this->_double = std::strtod(literal.c_str(), NULL);
-//	if (this->_literal.lenth() > 1 && )
-	std::cout << this->_double << " " << this->_literal <<  std::endl;
+	this->_double = std::strtod(literal.c_str(), &surplus);
+	if (errno == ERANGE)
+		std::cout << ND << std::endl;
+	else if (*surplus)
+		std::cout << NN << std::endl;
+	else
+		std::cout << this->_double << " " << this->_literal <<  std::endl;
 }
+/*
+void	Scalar::toInt(void)
+{
+	if (this->_double == "nan" || this->_double == "nanf")
+		std::cout << NN << std::endl;
+	else
+	{
+		this->_int = static_cast<int>(this->_double);
+	}
+}
+
+void	Scalar::toFloat(void)
+{
+	if (this->_double == "nan" || this->_double == "nanf")
+		std::cout << NN << std::endl;
+	else
+	{
+		this->_float = static_cast<float>(this->_double);
+	}
+}
+
+void	Scalar::toChar(void)
+{
+	//character imprimible
+	if (this->_double == "nan" || this->_double == "nanf")
+		std::cout << NN << std::endl;
+	else if ()
+	else
+	{
+		this->_int = static_cast<int>(this->_double);
+	}
+}*/

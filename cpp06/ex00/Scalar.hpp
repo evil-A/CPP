@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 08:33:26 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/17 11:48:50 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/17 12:23:55 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <math.h>
 #include <limits>
 #include <fstream>
+#include <cerrno>
 
 #define ND "Non displayable"
 #define NN "imposible"
