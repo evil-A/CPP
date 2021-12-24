@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:52:52 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/24 17:30:48 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/24 19:23:33 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Scalar::Scalar(void) : _literal(""), _int(0), _float(0.0f), _double(0.0f), _char(0)
 {
-	(void)_int;
+//	(void)_int;
 	(void)_float;
-	(void)_char;
+//	(void)_char;
 }
 
 Scalar::~Scalar(void)
@@ -43,8 +43,8 @@ void	Scalar::setLiteral(std::string const &literal)
 // double nan = nan
 	if (errno == ERANGE)
 		std::cout << "out of range" << std::endl;
-	else if (*surplus)
-		std::cout << surplus << std::endl;
+//	else if (*surplus)  //imprime f al introducir floats
+//		std::cout << surplus << std::endl;
 	else
 		std::cout << this->_double << " " << this->_literal <<  std::endl;
 }
@@ -65,10 +65,12 @@ void	Scalar::toChar(void)
 {
 	if (this->_literal.length() == 1)
 	{
-		this->_char = this->_literal[0];
+		this->_char = static_cast<char>(this->_double);
+		//this->_char = this->_literal.c_str()[0];
 		if (this->_char < 32 || this->_char > 126)
 			std::cout << ND << std::endl;
 		else
+
 			std::cout << this->_char << std::endl;
 	}
 	else if (this->_literal.length() > 1)
@@ -99,11 +101,7 @@ void	Scalar::toChar(void)
 
 void	Scalar::toFloat(void)
 {
-	if (this->_double == "nan" || this->_double == "nanf")
-		std::cout << NN << std::endl;
-	else
-	{
-		this->_float = static_cast<float>(this->_double);
-	}
+	
 }
-}*/
+
+*/
