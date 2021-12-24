@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 08:33:26 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/17 12:23:55 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/23 17:52:44 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <math.h>
+#include <cmath>
 #include <limits>
 #include <fstream>
 #include <cerrno>
@@ -41,9 +41,9 @@ class Scalar
 		std::string const	getLiteral(void)const;
 		void				setLiteral(std::string const &literal);
 
-//		void	toInt(void);
+		void	toInt(void);
 //		void	toFloat(void);
-//		void	toChar(void);
+		void	toChar(void);
 };
 
 std::ostream	&operator<<(std::ostream &output, Scalar const &src);
