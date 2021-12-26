@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 08:33:26 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/26 19:26:52 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/26 20:23:09 by rnavarre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Scalar
 		void				setLiteral(std::string const &literal);
 
 		void	toInt(void);
-//		void	toChar(void);
+		void	toChar(void);
 		void	toFloat(void);
 //		void	toDouble(void);
 };
