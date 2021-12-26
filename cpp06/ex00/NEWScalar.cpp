@@ -6,18 +6,19 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:52:52 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/26 20:34:24 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/26 22:22:00 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Scalar.hpp"
+#include <cstdlib>
+#include <climits>
 
 Scalar::Scalar(void) : _literal(""), _int(0), _float(0.0f), _double(0.0f), _char(0)
 {
 //	(void)_int;
-//	(void)_float;
-	(void)_double;
-	(void)_char;
+	(void)_float;
+//	(void)_char;
 }
 
 Scalar::~Scalar(void)
@@ -32,87 +33,37 @@ std::string const	Scalar::getLiteral(void)const
 
 void	Scalar::setLiteral(std::string const &literal)
 {
+	char	*surplus;
+
 	this->_literal = literal;
+	this->_double = std::strtod(literal.c_str(), &surplus);
+
+//Configurar mandonga
+//  0 ... char ND
+// NN char and int imposible
+// Float nan = nanf
+// double nan = nan
+	if (errno == ERANGE)
+		std::cout << "out of range" << std::endl;
+	else if (*surplus && *surplus != 'd' && *surplus != 'f')
+		std::cout << "int: imposible" << std::endl;
+//	else if (*surplus)  //imprime f al introducir floats
+//		std::cout << surplus << std::endl;
+	else
+		std::cout << this->_double << " " << this->_literal <<  std::endl;
 }
 
 void	Scalar::toInt(void)
 {
-/*	char	*surplus;
-
-	try
+	int	i = static_cast<int>(this->_double);
+	if (this->_double > INT_MAX || this->_double < INT_MIN || isinf(this->_double) || isnan(this->_double))
+		std::cout << NN << std::endl;
+	else
 	{
-		this->_int = static_cast<int>(std::strtod(this->_literal.c_str(), &surplus));
-		if ((this->_int == INT_MIN || this->_int == INT_MAX) && !isdigit(this->_literal.c_str()[0]))
-			std::cout << "nan" << std::endl;
-		else
-			std::cout << "int: " << this->_int << std::endl;	
-
-	}
-*/
-	try
-	{
-		this->_int = static_cast<int>(std::stoi(this->_literal));
-		std::cout << "int: " << this->_int << std::endl;	
-	}
-	catch(std::invalid_argument &)
-	{
-		std::cout << "int: " << NN << std::endl;
-	}
-	catch (std::out_of_range &)
-	{
-		std::cout << "int: " << ND << std::endl;
-	}
-//	catch(std::system_error &)
-//	{
-//	}
-//	{
-//		if (errno == ERANGE || *surplus)
-//			std::cout << "nan" << std::endl;
-//	}
-}
-
-void	Scalar::toFloat(void)
-{
-	try
-	{
-		this->_float = static_cast<float>(std::stof(this->_literal));
-		std::cout << "float: " << this->_float;
-	   	if (static_cast<int>(this->_float) == this->_float)
-			std::cout << ".0";
-		std::cout << "f" << std::endl;
-	}
-	catch(std::invalid_argument &)
-	{
-		std::cout << "float: " << NN << std::endl; 
-	}
-	catch(std::out_of_range &)
-	{
-		std::cout << "float: " << ND << std::endl;
+		this->_int = i;
+		std::cout << this->_int << std::endl;
 	}
 }
-
-
-void	Scalar::toDouble(void)
-{
-	try
-	{
-		this->_double = static_cast<double>(std::stof(this->_literal));
-		std::cout << "double: " << this->_double;
-	   	if (static_cast<int>(this->_double) == this->_double)
-			std::cout << ".0";
-		std::cout << std::endl;
-	}
-	catch(std::invalid_argument &)
-	{
-		std::cout << "double: " << NN << std::endl; 
-	}
-	catch(std::out_of_range &)
-	{
-		std::cout << "double: " << ND << std::endl;
-	}
-}
-
-/*
 
 void	Scalar::toChar(void)
 {
@@ -130,6 +81,7 @@ void	Scalar::toChar(void)
 		std::cout << NN << std::endl;
 }
 
+/*
 void	Scalar::toChar(void)
 {
 	std::string	lit = this->_literal;
@@ -151,6 +103,9 @@ void	Scalar::toChar(void)
 
 }
 
-
+void	Scalar::toFloat(void)
+{
+	
+}
 
 */
