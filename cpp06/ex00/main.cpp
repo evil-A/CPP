@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:30:17 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/24 19:23:35 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/26 18:33:54 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char const **argv)
 		return (terror());
 	input.setLiteral(static_cast<std::string>(argv[1]));
 	input.toInt();
-	input.toChar();
+//	input.toChar();
 
 	return (0);
 }
