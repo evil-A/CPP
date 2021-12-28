@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:52:52 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/12/26 20:34:24 by evila-ro         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:16:09 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,6 @@ void	Scalar::setLiteral(std::string const &literal)
 
 void	Scalar::toInt(void)
 {
-/*	char	*surplus;
-
-	try
-	{
-		this->_int = static_cast<int>(std::strtod(this->_literal.c_str(), &surplus));
-		if ((this->_int == INT_MIN || this->_int == INT_MAX) && !isdigit(this->_literal.c_str()[0]))
-			std::cout << "nan" << std::endl;
-		else
-			std::cout << "int: " << this->_int << std::endl;	
-
-	}
-*/
 	try
 	{
 		this->_int = static_cast<int>(std::stoi(this->_literal));
@@ -62,13 +50,6 @@ void	Scalar::toInt(void)
 	{
 		std::cout << "int: " << ND << std::endl;
 	}
-//	catch(std::system_error &)
-//	{
-//	}
-//	{
-//		if (errno == ERANGE || *surplus)
-//			std::cout << "nan" << std::endl;
-//	}
 }
 
 void	Scalar::toFloat(void)
@@ -112,45 +93,30 @@ void	Scalar::toDouble(void)
 	}
 }
 
-/*
-
 void	Scalar::toChar(void)
 {
-	if (this->_literal.length() == 1)
-	{
-		this->_char = static_cast<char>(this->_double);
-		//this->_char = this->_literal.c_str()[0];
-		if (this->_char < 32 || this->_char > 126)
-			std::cout << ND << std::endl;
-		else
+	int	c;
 
-			std::cout << this->_char << std::endl;
-	}
-	else if (this->_literal.length() > 1)
-		std::cout << NN << std::endl;
-}
-
-void	Scalar::toChar(void)
-{
-	std::string	lit = this->_literal;
-	char		c;
-
-	if (lit.length() > 1)
-	{
-		std::cout << NN << std::endl;
-		return ;
-	}
-	c = lit.c_str()[0];
-	if (c < 32 || c > 126)
-	{
-		std::cout << ND << std::endl;
-		return ;
-	}
+	if (this->_literal.length() == 1 && !isdigit(static_cast<int>(this->_literal.c_str()[0])))
+		std::cout << "char: " << static_cast<char>(this->_literal.c_str()[0]) << std::endl;
 	else
-		std::cout << c << std::endl;
-
+	{
+		try
+		{
+			c = static_cast<int>(std::stoi(this->_literal));
+			if (isprint(c))
+				std::cout << "char: " << "'" << static_cast<char>(c) << "'" << std::endl;
+			if (c < 32 || c > 126)
+				std::cout << "char: " << ND << std::endl;
+		}
+		catch(std::invalid_argument &)
+		{
+			std::cout << "char: " << NN << std::endl;
+		}
+		catch(std::out_of_range &)
+		{
+			std::cout << "char: " << ND << std::endl;
+		}
+	}
+	return ;
 }
-
-
-
-*/
