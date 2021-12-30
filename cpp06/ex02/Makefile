@@ -6,13 +6,13 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/28 21:08:50 by evila-ro          #+#    #+#              #
-#    Updated: 2021/12/28 21:16:06 by evila-ro         ###   ########.fr        #
+#    Updated: 2021/12/30 20:08:37 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= identify
 
-SRCS		= ./main.cpp	./Base.cpp	#./A.cpp	./B.cpp	./C.cpp
+SRCS		= ./main.cpp	./Base.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
@@ -22,7 +22,7 @@ CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
 RM			= rm -f
 
-${NAME}		= ${OBJS}
+${NAME}:	${OBJS}
 				@${CXX} ${CXXFLAGS} -o ${NAME} ${OBJS}
 
 all:		${NAME}
@@ -30,7 +30,7 @@ all:		${NAME}
 clean:
 				@${RM} ${OBJS}
 
-flcean:		clean
+fclean:		clean
 				@${RM} ${NAME}
 
 re: fclean all
