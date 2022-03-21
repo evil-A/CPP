@@ -6,7 +6,7 @@
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 20:08:41 by evila-ro          #+#    #+#              #
-#    Updated: 2022/03/18 21:24:34 by evila-ro         ###   ########.fr        #
+#    Updated: 2022/03/20 19:56:17 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS		= ${SRCS:.cpp=.o}
 
 CXX			= clang++
 
-CXXFLAGS	=  -Wall -Werror -Wextra =std=c++98
+CXXFLAGS	=  -Wall -Werror -Wextra -std=c++98
 
 RM			= rm -f
 
