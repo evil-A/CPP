@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 20:42:44 by evila-ro          #+#    #+#             */
-/*   Updated: 2022/03/18 20:08:08 by evila-ro         ###   ########.fr       */
+/*   Updated: 2022/03/23 23:46:59 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 class Span
 {
