@@ -1,131 +1,131 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 16:43:05 by evila-ro          #+#    #+#             */
-/*   Updated: 2023/12/22 11:00:17 by evila-ro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "BitcoinExchange.hpp"
+		bool		isDate(std::string const &date);
+		bool		isValue(double const &value);
 
-BitcoinExchange::~BitcoinExchange(void)
+BitcoinExchange::BitcoinExchange(std::string const &histoSheet)
 {
+	std::ifstream file(histoSheet.c_str());
+	std::string line;
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		std::string::size_type pos = line.find(',');
+		if (pos == std::string::npos)
+		{
+			std::cout << "Error: Wrong format in database => " << line << std::endl;
+			continue;
+		}
 
+		std::string date = line.substr(0, pos);
+		std::string val = line.substr(pos + 1);
+
+		double dval;
+		std::istringstream pvalue(val);
+		if (!(pvalue >> dval))
+		{
+			std::cout << "Error: Wrong format in database => " << val << '\n';
+			continue;
+		}
+
+		dataSheet[date] = dval;
+	}
 }
 
-BitcoinExchange::BitcoinExchange(std::string const &histo, std::string const &inData)
+double BitcoinExchange::getValue(std::string const &date)
 {
-	std::ifstream database(histo);
-	if (!database.is_open())
+	std::map<std::string, double>::iterator it = dataSheet.lower_bound(date);
+	if (it->first != date && it != dataSheet.begin())
+		--it;
+	if (it != dataSheet.end())
+		return it->second;
+	else if (!dataSheet.empty())
+		return it->second;
+	return -1.0;
+}
+
+bool BitcoinExchange::isDate(std::string const &date)
+{
+	std::string::size_type pos1 = date.find('-');
+	std::string::size_type pos2 = date.rfind('-');
+
+	if (pos1 == std::string::npos || pos1 == pos2)
+		return false;
+
+	std::string years = date.substr(0, pos1);	//0, 4
+	std::string months = date.substr(pos1 + 1, pos2 - pos1 - 1);		//5, 8
+	std::string days = date.substr(pos2 + 1);	//9
+
+	int year, month, day;
+	std::istringstream yss(years), mss(months), dss(days);
+
+	if (!(yss >> year) || !(mss >> month) || !(dss >> day))
+		return false;
+	if (year < 1970 || year > 2024 || month < 1 || month > 12 || day < 1 || day > 31)
+		return false;
+	if (month == 4 || month == 6 || month == 9 || month == 11)
 	{
-		std::cout << "Cannot read file" << std::endl;
+		if (day > 30)
+			return false;
+	}
+	if (month == 2)
+	{
+		bool Leap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+		if ((Leap && day > 29) || (!Leap && day > 28))
+		{
+			return false;
+		}
 	}
 
+	return true;
+}
+
+bool BitcoinExchange::isValue(double const &value)
+{
+	if (value < 0 || value > 1000)
+	{
+		std::cout << "Error: " << value << " is out of limits." << std::endl;;
+		return false;
+	}
+	return true;
+}
+
+void BitcoinExchange::parseInput(std::string const &inputData)
+{
+	std::ifstream file(inputData.c_str());
 	std::string line;
-	while (std::getline(database, line))
+	std::getline(file, line);
+	while (std::getline(file, line))
 	{
 		std::istringstream ss(line);
 		std::string date;
-		std::string value;
-		if (std::getline(ss, date, ',') && ss >> value)
+		double value;
+		char pos;
+
+		if (!(ss >> date >> pos >> value))
 		{
-			bitExchange[date] = atof(value.c_str());
-		}
-	}
-	database.close();
-
-	this->values = 0;
-	parseBit(inData);
-}
-
-BitcoinExchange::BitcoinExchange(BitcoinExchange const &src)
-{
-	*this = src;
-}
-
-BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &ass)
-{
-	this->bitExchange = ass.bitExchange;
-	return (*this);
-}
-
-int				BitcoinExchange::parseBit(std::string const &input)
-{
-	std::ifstream inputFile(input);
-	if (!inputFile.is_open())
-	{
-		std::cout << "Cannot read input file" << std::endl;
-	}
-
-	std::string inLine;
-	std::string values;
-	std::string formatDate;
-	std::string inputDate;
-	std::string inputValue;
-
-	double nValue;
-	std::getline(inputFile, inLine);
-	int	size;
-	size = inLine.length();
-	while (std::getline(inputFile, inLine))
-	{
-		formatDate = inLine.substr(0, 10);
-		if (valiDate(formatDate))
-		{
-			std::cout << "Error: invalid date: " <<formatDate << std::endl;
+			std::cout << "Error: Cannot parse line => " << line << std::endl;;
 			continue;
 		}
-		values = inLine.substr(11, size);
-		if (values == "")
-			continue;
-		nValue = atof(values.c_str());
+		if (pos != '|')
 		{
-			if (nValue < 0 || nValue > 1000)
-			{
-				std::cout << "Error: invalid quantity: " << nValue << std::endl;
-				continue;
-			}
+			std::cout << "Error: Not a '|' delimiter in line => " << line << std::endl;;
+			continue;
 		}
-		nValue = nValue * prevDate(formatDate);
-		std::cout << formatDate << " => " << values << " = " << nValue << std::endl;
+		if (!isDate(date))
+		{
+			std::cout << "Error: Wrong date format in line => " << line << std::endl;
+			continue;
+		}
+		if (!isValue(value))
+		{
+			continue;
+		}
+		double exchange = getValue(date);
+		if (exchange == -1.0)
+		{
+			std::cout << "Error: No date available => " << date << std::endl;
+			continue;
+		}
+		std::cout << date << " => " << value << " = " << value * exchange << std::endl;
 	}
-	inputFile.close();
-	return (0);
-}
-	
-int				BitcoinExchange::valiDate(std::string dates)
-{
-	int		y, m, d;
-	if (dates.length() < 10)
-		return (1);
-	y = std::stoi(dates.substr(0, 4));
-	m = std::stoi(dates.substr(5, 2));
-	d = std::stoi(dates.substr(8, 2));
-	if (y < 2008 || y > 999 || m < 1 || m > 12 || d < 1 || d > 31 ||
-    (d == 31 && (m == 4 || m == 6 || m == 9 || m == 11)) ||
-    (m == 2 && (d == 30 || (d == 29 && y % 4 != 0))))
-	{
-		std::cout << "Wrong date" << std::endl;
-		return (1);
-	}
-	return (0);
-}
-
-double			BitcoinExchange::prevDate(std::string formatDate)
-{
-	std::map<std::string, float>::iterator it = this->bitExchange.begin();
-	std::string		prev = it->first;
-	while (it != this->bitExchange.end())
-	{
-		if (formatDate > prev)
-			it++;
-		if (formatDate <= prev)
-			return (this->bitExchange.find(prev)->second);
-		prev = it->first;
-	}
-	return (this->bitExchange.find(prev)->second);
 }

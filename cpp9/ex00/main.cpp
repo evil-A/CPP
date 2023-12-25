@@ -1,29 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 16:42:42 by evila-ro          #+#    #+#             */
-/*   Updated: 2023/12/22 11:55:00 by evila-ro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <iostream>
 #include "BitcoinExchange.hpp"
 
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		BitcoinExchange bitcoin("data.csv");
-		bitcoin.parseInput(av[1]);
+int main(int argc, char* argv[]) {
+	if (argc != 2) {
+		std::cout << "Error: Wrong number of arguments." << std::endl;
+		return 1;
 	}
-	else
-	{
-		std::cout << "Wrong number of arguments" << std::endl;
-		return (1);
-	}
-	return (0);
-};
+
+	BitcoinExchange memo("data.csv");
+	memo.parseInput(argv[1]);
+
+	return 0;
+}

@@ -1,45 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 16:43:33 by evila-ro          #+#    #+#             */
-/*   Updated: 2023/12/22 08:00:40 by evila-ro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef  BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
+#ifndef BITCOINEXCHANGE_HPP_
+#define BITCOINEXCHANGE_HPP_
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <string>
 #include <map>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
-
-
- class BitcoinExchange
+class BitcoinExchange
 {
-	private:
-		std::map<std::string, float>	bitExchange;
-		double							values;
-		BitcoinExchange(void);
-	
-	public:
-		virtual			~BitcoinExchange(void);
+    private:
+	    std::map<std::string, double> dataSheet;
+        BitcoinExchange(void);
+	    BitcoinExchange(BitcoinExchange const &src);
 		
-		BitcoinExchange(std::string const &histo, std::string const &inData);
+    public:
+	    BitcoinExchange(std::string const &histoSheet);
 
-		BitcoinExchange(BitcoinExchange const &src);
-		BitcoinExchange	&operator=(BitcoinExchange const &ass);
+        virtual     ~BitcoinExchange(void)
 
-		int				parseBit(std::string const &input);
-		int				valiDate(std::string dates);
-		double			prevDate(std::string formatDate);
-
+        void		parseInput(std::string const &inputData);
+		double		getValue(std::string const &date);//	double GetExchangeRate(const std::string &date);
+		bool		checkDate(std::string const &date);
+		bool		checkValue(double const &value);
 };
 
 #endif
