@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 22:09:21 by evila-ro          #+#    #+#             */
+/*   Updated: 2023/12/27 22:14:10 by evila-ro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RPN.hpp"
 
 std::stack<int> RPN::stack;
 
-struct const RPN::operations RPN::operations[op_size] = {
+const struct RPN::operations RPN::operations[op_size] = {
 	{ '+', &RPN::add },
 	{ '-', &RPN::sub },
 	{ '*', &RPN::mul },
