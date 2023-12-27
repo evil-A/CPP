@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 16:43:05 by evila-ro          #+#    #+#             */
+/*   Updated: 2023/12/27 21:57:58 by evila-ro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(std::string const &histoSheet)
@@ -87,7 +99,7 @@ bool BitcoinExchange::isValue(double const &value)
 	return true;
 }
 
-void BitcoinExchange::parseInput(std::string const &inputData)
+void BitcoinExchange::parseBit(std::string const &inputData)
 {
 	std::ifstream file(inputData.c_str());
 	std::string line;
@@ -126,4 +138,9 @@ void BitcoinExchange::parseInput(std::string const &inputData)
 		}
 		std::cout << date << " => " << value << " = " << value * exchange << std::endl;
 	}
+}
+
+BitcoinExchange::~BitcoinExchange()
+{
+
 }
