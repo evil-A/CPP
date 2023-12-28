@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 20:49:15 by evila-ro          #+#    #+#             */
-/*   Updated: 2023/12/28 21:06:21 by evila-ro         ###   ########.fr       */
+/*   Updated: 2023/12/29 00:23:56 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		std::cout << "Wrong number of arguments" << std::endl;
-	else if (argc < 3)
-		std::cout << "Wrong amount of numbers" << std::endl;
-
+	if (argc < 3)
+	{
+		std::cout << "Wrong input" << std::endl;
+		return (1);
+	}
+	
 	PmergeMe pm;
-	pm.setRange(argc - 1);
+	pm.setSize(argc - 1);
 	pm.setOdd(false);
 	if ((argc - 1) % 2 != 0)
 		pm.setOdd(true);
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
 		std::cout << "Negative number" << std::endl;
 		return (1);
 	}
-	pm.setLastItem(last);
+	pm.setLast(last);
 
 	std::cout << "Before : ";
 	for (int i = 1; i < argc; ++i)

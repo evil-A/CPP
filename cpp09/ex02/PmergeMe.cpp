@@ -6,28 +6,29 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 20:48:27 by evila-ro          #+#    #+#             */
-/*   Updated: 2023/12/28 21:05:12 by evila-ro         ###   ########.fr       */
+/*   Updated: 2023/12/29 00:23:58 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) : _range(0), _odd(false), _last_item(0)
+PmergeMe::PmergeMe(void) : _size(0), _odd(false), _last(0)
 {
 
 }
 
-PmergeMe::PmergeMe(PmergeMe const &pm)
+PmergeMe::PmergeMe(PmergeMe const &src)
 {
-	_range = pm._range;
-	_odd = pm._odd;
-	_last_item = pm._last_item;
+	this->_size = src._size;
+	this->_odd = src._odd;
+	this->_last = src._last;
 }
 
-PmergeMe &PmergeMe::operator=(PmergeMe const &pm) {
-	_range = pm._range;
-	_odd = pm._odd;
-	_last_item = pm._last_item;
+PmergeMe &PmergeMe::operator=(PmergeMe const &ass)
+{
+	this->_size = ass._size;
+	this->_odd = ass._odd;
+	this->_last = ass._last;
 
 	return (*this);
 }
@@ -39,32 +40,32 @@ PmergeMe::~PmergeMe(void)
 
 void PmergeMe::setOdd(bool d)
 {
-   	_odd = d;
+   this->_odd = d;
 }
 
-void PmergeMe::setLastItem(int last)
+void PmergeMe::setLast(int last)
 {
-	_last_item = last;
+	this->_last = last;
 }
 
-void PmergeMe::setRange(int range)
+void PmergeMe::setSize(int size)
 {
-	_range = range;
+	this->_size = size;
 }
 
 bool PmergeMe::getOdd(void)
 {
-	return (_odd);
+	return (this->_odd);
 }
 
-int PmergeMe::getLastItem(void)
+int PmergeMe::getLast(void)
 {
-	return (_last_item);
+	return (this->_last);
 }
 
-int PmergeMe::getRange(void)
+int PmergeMe::getSize(void)
 {
-	return (_range);
+	return (_size);
 }
 
 bool PmergeMe::checkInput(std::string s1, std::string s2)
