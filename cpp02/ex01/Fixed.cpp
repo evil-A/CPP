@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 08:53:55 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/14 03:35:54 by evila-ro         ###   ########.fr       */
+/*   Created: 2024/04/11 21:29:07 by evila-ro          #+#    #+#             */
+/*   Updated: 2024/04/14 11:43:10 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 #include "Fixed.hpp"
+
 
 Fixed::Fixed(void) : _point(0)
 {
@@ -41,45 +41,46 @@ Fixed::Fixed(float const f)
 	return ;
 }
 
-Fixed::Fixed(Fixed const &cop)
+Fixed::Fixed(Fixed const &src)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = cop;
+	*this = src;
+
 	return ;
 }
 
-Fixed	&Fixed::operator = (Fixed const &ass)
+Fixed&	Fixed::operator=(Fixed const &ass)
 {
-	 std::cout << "Assignation operator called" << std::endl;
-	 if (this != &ass)
-		 this->_point = ass.getRawBits();
-	 return (*this);
+	std::cout << "Assignation operator called" << std::endl;
+	if (this != &ass)
+		this->_point = ass.getRawBits();
+	return (*this);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
 	this->_point = raw;
+	return ;
 }
 
-int		Fixed::getRawBits(void)const
+int		Fixed::getRawBits(void) const
 {
-	return (this->_point);
+	std::cout << "getRawBits member function called" << std::endl;
+   return (this->_point);	
 }
 
-int		Fixed::toInt(void)const
+int		Fixed::toInt(void) const
 {
 	return (this->_point >> Fixed::_frac);
-	//return (static_cast<int>(this->_point));//c++11
 }
 
-float	Fixed::toFloat(void)const
+float	Fixed::toFloat(void) const
 {
 	return (this->_point / (float)(1 << Fixed::_frac));
-	//return (static_cast<float>(this->_point));//c++11
 }
 
-//An overload to the « operator that inserts a floating point representation of the fixed point value into the parameter output stream.
-std::ostream	&operator << (std::ostream &output, Fixed const &fix)
+std::ostream	&operator<<(std::ostream &output, Fixed const &fix)
 {
 	return (output << fix.toFloat());
 }
+

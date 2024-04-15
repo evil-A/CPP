@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 03:38:44 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/16 08:12:22 by evila-ro         ###   ########.fr       */
+/*   Created: 2024/04/11 21:29:07 by evila-ro          #+#    #+#             */
+/*   Updated: 2024/04/15 11:50:11 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 #include "Fixed.hpp"
+
 
 Fixed::Fixed(void) : _point(0)
 {
@@ -45,10 +45,11 @@ Fixed::Fixed(Fixed const &src)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
+
 	return ;
 }
 
-Fixed	&Fixed::operator=(Fixed const &ass)
+Fixed&	Fixed::operator=(Fixed const &ass)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &ass)
@@ -56,92 +57,80 @@ Fixed	&Fixed::operator=(Fixed const &ass)
 	return (*this);
 }
 
-Fixed	Fixed::operator+(Fixed const &ass)const
+Fixed	Fixed::operator+(Fixed const &ass) const
 {
-	std::cout << "Addition operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Addition operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	return (this->toFloat() + ass.toFloat());
 }
 
-Fixed	Fixed::operator-(Fixed const &ass)const
+Fixed	Fixed::operator-(Fixed const &ass) const
 {
-	std::cout << "Subtraction operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Subtraction operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	return (this->toFloat() - ass.toFloat());
 }
 
-Fixed	Fixed::operator*(Fixed const &ass)const
+Fixed	Fixed::operator*(Fixed const &ass) const
 {
-	std::cout << "Multiplication operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Multiplication operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	return (this->toFloat() * ass.toFloat());
 }
 
-Fixed	Fixed::operator/(Fixed const &ass)const
+Fixed	Fixed::operator/(Fixed const &ass) const
 {
-	std::cout << "Division operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Division operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	return (this->toFloat() / ass.toFloat());
 }
 
-bool	Fixed::operator>(Fixed const &ass)const
+bool	Fixed::operator>(Fixed const &ass) const
 {
-	std::cout << "Comparison > operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison > operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() > ass.toFloat())
 		return (true);
 	return (false);
 }
 
-bool	Fixed::operator>=(Fixed const &ass)const
+bool	Fixed::operator>=(Fixed const &ass) const
 {
-	std::cout << "Comparison >= operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison >= operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() >= ass.toFloat())
 		return (true);
 	return (false);
 }
 
-bool	Fixed::operator<(Fixed const &ass)const
+bool	Fixed::operator<(Fixed const &ass) const
 {
-	std::cout << "Comparison < operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison < operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() < ass.toFloat())
 		return (true);
 	return (false);
 }
 
-bool	Fixed::operator<=(Fixed const &ass)const
+bool	Fixed::operator<=(Fixed const &ass) const
 {
-	std::cout << "Comparison <= operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison <= operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() <= ass.toFloat())
 		return (true);
 	return (false);
 }
-
-bool	Fixed::operator==(Fixed const &ass)const
+bool	Fixed::operator==(Fixed const &ass) const
 {
-	std::cout << "Comparison == operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison == operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() == ass.toFloat())
 		return (true);
 	return (false);
 }
-
-bool	Fixed::operator!=(Fixed const &ass)const
+bool	Fixed::operator!=(Fixed const &ass) const
 {
-	std::cout << "Comparison <= operator called with " << this->toFloat();
-	std::cout << " and " << ass.toFloat() << std::endl;
+	std::cout << "Comparison != operator called with " << this->toFloat() << " and " << ass.toFloat() << std::endl;
 
 	if (this->toFloat() != ass.toFloat())
 		return (true);
@@ -183,45 +172,47 @@ Fixed	Fixed::operator--(int)
 void	Fixed::setRawBits(int const raw)
 {
 	this->_point = raw;
+	return ;
 }
 
-int		Fixed::getRawBits(void)const
+int		Fixed::getRawBits(void) const
 {
-	return (this->_point);
+	std::cout << "getRawBits member function called" << std::endl;
+   return (this->_point);	
 }
 
-int		Fixed::toInt(void)const
+int		Fixed::toInt(void) const
 {
 	return (this->_point >> Fixed::_frac);
 }
 
-float	Fixed::toFloat(void)const
+float	Fixed::toFloat(void) const
 {
 	return (this->_point / (float)(1 << Fixed::_frac));
 }
 
-Fixed const	&Fixed::min(Fixed const &a, Fixed const &b)
+Fixed const		&Fixed::min(Fixed const &a, Fixed const &b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-Fixed const	&Fixed::max(Fixed const &a, Fixed const &b)
+Fixed const		&Fixed::max(Fixed const &a, Fixed const &b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
 
-Fixed	&Fixed::min(Fixed &a, Fixed &b)
+Fixed			&Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-Fixed	&Fixed::max(Fixed &a, Fixed &b)
+Fixed			&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a > b)
 		return (a);
@@ -230,6 +221,6 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 
 std::ostream	&operator<<(std::ostream &output, Fixed const &fix)
 {
-	output << fix.toFloat();
-	return (output);
+	return (output << fix.toFloat());
 }
+

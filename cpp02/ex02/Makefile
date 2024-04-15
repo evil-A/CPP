@@ -5,33 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/14 03:36:27 by evila-ro          #+#    #+#              #
-#    Updated: 2021/11/16 08:59:07 by evila-ro         ###   ########.fr        #
+#    Created: 2024/04/14 02:44:26 by evila-ro          #+#    #+#              #
+#    Updated: 2024/04/14 03:12:36 by evila-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fixed
 
-SRCS	= ./main.cpp	./Fixed.cpp
+SRC		= ./main.cpp ./Fixed.cpp
 
-OBJS	= ${SRCS:.cpp=.o}
+OBJ		= ${SRC:.cpp=.o}
 
 CC		= clang++
 
-FLAGS	= -Wall -Werror -Wextra -std=c++98
+FLAGS	=  -Wall -Werror -Wextra -std=c++98
 
-RM		= rm -f
+RM		= rm -rf
 
-${NAME}:	${OBJS}
-				@${CC} ${FLAGS} -o ${NAME} ${OBJS}
+${NAME}:	${OBJ}
+	@${CC} ${FLAG} -o ${NAME} ${OBJ}
 
 all:		${NAME}
 
 clean:
-				@${RM} ${OBJS}
+	@${RM} ${OBJ}
 
-fclean:		clean
-				@${RM} ${NAME}
+fclean: 	clean
+	@${RM} ${NAME}
 
 re: fclean all
 

@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 08:10:35 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/14 03:35:52 by evila-ro         ###   ########.fr       */
+/*   Created: 2024/04/14 03:16:15 by evila-ro          #+#    #+#             */
+/*   Updated: 2024/04/14 07:06:00 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <iomanip>
+//#include <iomanip>
 #include "Fixed.hpp"
 
-int	main(void)
+int		main(void)
 {
-	Fixed		a;
-	Fixed const	b(10);
-	Fixed const	c(42.42f);
-	Fixed const d(b);
+	Fixed			a;
+	Fixed const		b(10);
+	Fixed const		c(42.42f);
+	Fixed const		d(b);
 
 	a = Fixed(1234.4321f);
 
@@ -34,4 +34,5 @@ int	main(void)
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
 	return (0);
-}
+
+};

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 05:28:11 by evila-ro          #+#    #+#             */
-/*   Updated: 2021/11/13 08:05:28 by evila-ro         ###   ########.fr       */
+/*   Created: 2024/04/11 21:29:07 by evila-ro          #+#    #+#             */
+/*   Updated: 2024/04/12 13:02:25 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ Fixed::~Fixed(void)
 	return ;
 }
 
-Fixed::Fixed(Fixed const &cop)
+Fixed::Fixed(Fixed const &src)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = cop;
-	//point = cop.point;
+	*this = src;
+
 	return ;
 }
 
-Fixed	&Fixed::operator = (Fixed const &ass)
+Fixed&	Fixed::operator=(Fixed const &ass)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &ass)
@@ -47,9 +47,8 @@ void	Fixed::setRawBits(int const raw)
 	return ;
 }
 
-int		Fixed::getRawBits(void)const
+int		Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_point);
+   return (this->_point);	
 }
-
