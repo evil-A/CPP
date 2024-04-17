@@ -6,7 +6,7 @@
 /*   By: evila-ro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 03:16:15 by evila-ro          #+#    #+#             */
-/*   Updated: 2024/04/16 10:32:03 by evila-ro         ###   ########.fr       */
+/*   Updated: 2024/04/17 08:42:49 by evila-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(void)
 	std::cout << "point b: x=" << b.get_x() << ", y=" << b.get_y() << std::endl;
 	std::cout << "point c: x=" << c.get_x() << ", y=" << c.get_y() << std::endl;
 	std::cout << "point p: x=" << p.get_x() << ", y=" << p.get_y() << std::endl;
-	bsp(a, b, c, p) ? std::cout << "true/n" : std::cout << "false/n";
+	bsp(a, b, c, p) ? std::cout << "true\n" : std::cout << "false\n";
 
 	return (0);
 
